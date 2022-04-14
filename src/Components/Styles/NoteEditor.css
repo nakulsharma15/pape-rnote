@@ -1,0 +1,38 @@
+.note-form {
+    box-shadow: 1px 1px 1px 1px var(--gray-300);
+    width: max-content;
+    margin: 2rem;
+    padding: 1rem;
+    gap: 2rem;
+}
+
+.note-form div {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.submit-btn {
+    background-color: var(--blue-500);
+}
+
+.cancel-btn {
+    background-color: var(--red-400);
+}
+
+.cancel-btn:hover {
+    background-color: var(--red-500);
+}
+
+.submit-btn:hover {
+    background-color: var(--blue-600);
+}
+
+.color-icons:hover {
+    cursor:pointer;
+}
+
+.note-form:hover {
+    box-shadow: 2px 2px 2px 2px var(--gray-300);
+}
+

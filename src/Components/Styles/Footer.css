@@ -1,0 +1,16 @@
+footer {
+    margin-top: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    color: var(--black);
+    background-color: var(--gray-200);
+}
+
+@media only screen and (max-width: 600px) {
+
+    footer {
+        font-size: 0.75rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}

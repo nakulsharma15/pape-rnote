@@ -1,0 +1,51 @@
+@import url("https://altur-ui.netlify.app/stylesheets/main.css");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://pro.fontawesome.com/releases/v5.10.0/css/all.css");
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--white);
+}
+
+.flex-sb-c {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.homepage-body {
+    display: flex;
+}
+
+.aside-menu {
+    width: 20%;
+}
+
+.notes {
+    max-width: 100%;
+    flex-wrap: wrap;
+    padding-left: 1rem;
+}
+
+.main-body {
+    width: "80%";
+    display: "flex";
+    flex-direction: "column";
+}
+
+.add-note-btn {
+    max-width: fit-content;
+    background-color: var(--blue-500);
+}
+
+.add-note-btn span {
+    font-size: 1.25rem;
+}
+
+.add-note-btn:hover {
+    background-color: var(--blue-600);
+}
+
+.stick-bottom {
+    min-height: 100vh;
+}
