@@ -1,0 +1,41 @@
+aside {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.aside-item {
+    padding: 1rem 2rem;
+    border-top-right-radius: 2.5rem;
+    border-bottom-right-radius: 2.5rem;
+}
+
+.aside-item-text {
+    padding-left: 2.5rem;
+}
+
+.aside-item:hover {
+    background-color: var(--gray-200);
+}
+
+@media only screen and (max-width: 768px) {
+
+    aside {
+        max-width: 5rem;
+    }
+
+    .aside-item {
+        padding: 1rem 1rem;
+        padding-right: 1.5rem;
+        border-top-right-radius: 1.5rem;
+        border-bottom-right-radius: 1.5rem;
+      
+    }
+
+    .material-icons-outlined {
+        font-size: 1.25rem;
+    }
+
+    .aside-item-text {
+        display: none;
+    }
+}

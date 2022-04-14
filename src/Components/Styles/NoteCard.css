@@ -1,0 +1,96 @@
+.note-card {
+    max-width: 20rem;
+    height: max-content;
+    border: 1px solid var(--gray-300);
+    border-radius: 0.5rem;
+    margin: 1rem;
+}
+
+.note-card-body {
+    padding: 0.5rem;
+}
+
+.note-footer {
+    padding-top: 1rem;
+}
+
+.note-label {
+    max-width: max-content;
+    border: 1px solid var(--black);
+    border-radius: 0.75rem;
+    padding: 0.25rem 0.75rem;
+}
+
+.note-title-text {
+    max-width: 15rem;
+}
+
+.note-text {
+    max-width: 19rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+}
+
+.note-icons {
+    font-size: 1.25rem;
+    font-weight: lighter;
+    padding: 0.5rem;
+    color: var(--gray-600);
+    border-radius: 50%;
+}
+
+.note-pin-icon {
+    font-size: 1.5rem;
+}
+
+.note-card:hover {
+    box-shadow: 1px 1px 1px 1px var(--gray-200);
+}
+
+.note-icons:hover {
+    color: var(--black);
+    cursor: pointer;
+    font-size: 1.35rem;
+}
+
+.note-pin-icon:hover {
+    font-size: 1.6rem;
+}
+
+.note-label:hover {
+    cursor: pointer;
+}
+
+.pinned-icon:hover {
+    cursor: pointer;
+} 
+
+@media only screen and (max-width: 768px) {
+
+    .note-card {
+        max-width: 15rem;
+    }
+
+    .note-title-text {
+        max-width: 11rem;
+    }
+
+    .note-text {
+        max-width: 13.5rem;
+    }
+
+    .note-icons {
+        padding: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .note-pin-icon {
+        font-size: 1.25rem;
+    }
+
+    .note-created-text {
+        display: none;
+    }
+}
+
