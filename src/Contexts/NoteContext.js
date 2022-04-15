@@ -12,7 +12,8 @@ const NoteProvider = ({children}) => {
         note: "",
         label:"Home",
         priority:"Low",
-        color: "#ffffff"
+        color: "#ffffff",
+        date: new Date().toLocaleDateString()
     }
 
     const [note , setNote] = useState(sample);

@@ -6,13 +6,31 @@ export default function NoteCard({ Note }) {
 
     const {noteDetail , setNoteDetail , setNote} = useNote();
 
-    const {notes , pinnedNotes} = noteDetail;
+    const {notes , pinnedNotes , archiveNotes , trashNotes} = noteDetail;
+
+    const archiveHandler = (id) => {
+
+        const findNote = notes.find((item) => item.id === id);
+
+        const updatedNotes = notes.filter((item) => item.id !== id)
+
+        setNoteDetail({...noteDetail , notes: [...updatedNotes] ,archiveNotes: [...archiveNotes , findNote]});
+    }
 
     const editHandler = (id) => {
 
         const findNote = notes.find((item) => item.id === id);
 
-        setNote((prev) => ({...prev, title: findNote.title , note: findNote.note , id: findNote.id}))
+        setNote((prev) => ({...prev, ...findNote}))
+    }
+
+    const deleteHandler = (id) => {
+
+        const findNote = notes.find((note) => note.id === id);
+
+        const updatedNotes = notes.filter((note) => note.id !== id);
+
+        setNoteDetail({...noteDetail , trashNotes:[...trashNotes , findNote] , notes:[...updatedNotes]});
     }
 
     const pinHandler = (id) => {
@@ -39,14 +57,14 @@ export default function NoteCard({ Note }) {
                 </div>
                 
                 <div className="note-footer flex-sb-c">
-                    <p className="text-s"><span className="note-created-text">Created on: </span><span>14/04/2022</span></p>
+                    <p className="text-s"><span className="note-created-text">Created on: </span><span>{Note.date}</span></p>
                     <div className="note-footer-content">
 
                         <span className="material-icons-outlined note-icons note-footer-icons" onClick={() => editHandler(Note.id)}>edit</span>
 
-                        <span className="material-icons-outlined note-icons note-footer-icons">archive</span>
+                        <span className="material-icons-outlined note-icons note-footer-icons" onClick={() => archiveHandler(Note.id)}>archive</span>
 
-                        <span className="material-icons-outlined note-icons note-footer-icons">delete</span>
+                        <span className="material-icons-outlined note-icons note-footer-icons"  onClick={() => deleteHandler(Note.id)}>delete</span>
                     </div>
 
                 </div>

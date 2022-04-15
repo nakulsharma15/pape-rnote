@@ -12,7 +12,8 @@ export default function NoteEditor() {
         note: "",
         label: "Home",
         priority: "Low",
-        color: "#ffffff"
+        color: "#ffffff",
+        date: new Date().toLocaleDateString()
     }
 
     const colors = ["#f87171", "#fdba74", "#fde047", "#86efac", "#7dd3fc", "#ffffff"]
@@ -107,7 +108,7 @@ export default function NoteEditor() {
                     </div>
 
                     <div>
-                        {colors.map((color) => <span style={{ color: color, cursor: "pointer" }} class="material-icons" onClick={() => colorHandler(color)}>circle</span>)}
+                        {colors.map((color) => <span style={{ color: color, cursor: "pointer" }} className="material-icons" onClick={() => colorHandler(color)}>circle</span>)}
                     </div>
 
                     <div>
@@ -116,7 +117,7 @@ export default function NoteEditor() {
                             Add Note
                         </button>
                         
-                        <button class="btn secondary-btn cancel-btn" onClick={cancelHandler}>Cancel</button>
+                        <button className="btn secondary-btn cancel-btn" onClick={cancelHandler}>Cancel</button>
                     </div>
 
                 </form>
