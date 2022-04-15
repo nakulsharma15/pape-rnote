@@ -4,6 +4,8 @@ import Aside from "./Aside";
 import NoteCard from "./NoteCard";
 import NoteEditor from "./NoteEditor";
 import PinnedNoteCard from "./PinnedNoteCard";
+import ArchivedNoteCard from "./ArchivedNoteCard";
+import DeletedNoteCard from "./DeletedNoteCard";
 
 export {
     Header,
@@ -11,5 +13,7 @@ export {
     Aside,
     NoteCard,
     NoteEditor,
-    PinnedNoteCard
+    PinnedNoteCard,
+    ArchivedNoteCard,
+    DeletedNoteCard
 }
