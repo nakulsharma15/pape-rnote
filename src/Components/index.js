@@ -6,6 +6,7 @@ import NoteEditor from "./NoteEditor";
 import PinnedNoteCard from "./PinnedNoteCard";
 import ArchivedNoteCard from "./ArchivedNoteCard";
 import DeletedNoteCard from "./DeletedNoteCard";
+import Filters from "./Filters";
 
 export {
     Header,
@@ -15,5 +16,6 @@ export {
     NoteEditor,
     PinnedNoteCard,
     ArchivedNoteCard,
-    DeletedNoteCard
+    DeletedNoteCard,
+    Filters
 }

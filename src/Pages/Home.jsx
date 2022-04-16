@@ -1,6 +1,6 @@
-import { Header, Footer, Aside, NoteCard, NoteEditor, PinnedNoteCard } from "../Components/index";
+import { Header, Footer, Aside, NoteCard, NoteEditor, PinnedNoteCard, Filters } from "../Components/index";
 import { useNote } from "../Contexts/NoteContext";
-import { v4 as uuidv4 } from 'uuid';
+import { useFilter } from "../Contexts/Filters/FilterContext";
 
 export default function Home() {
 
@@ -8,11 +8,8 @@ export default function Home() {
 
     const { notes, pinnedNotes } = noteDetail;
 
-    const sample = {
-        id: uuidv4(),
-        title: "",
-        note: "",
-    }
+    const { filteredNoteList, state, dispatch } = useFilter();
+
 
     return (
         <div className="flex-column stick-bottom">
@@ -20,6 +17,7 @@ export default function Home() {
             <div className="homepage-body">
                 <div className="aside-menu">
                     <Aside />
+                    <Filters />
                 </div>
 
                 <div className="main-body">
@@ -37,17 +35,16 @@ export default function Home() {
                     </div> : null
                     }
 
-                    {(notes.length !== 0) ?
+                    {(filteredNoteList.length !== 0) ?
                         <div>
                             <h2>Notes:</h2>
                             <div className="notes flex-sp-ev notes-list">
-                                {notes.map((note) =>
+                                {filteredNoteList.map((note) =>
                                     <NoteCard Note={note} />
                                 )}
                             </div>
 
-                        </div> : null
-                    }
+                        </div> : null}
 
                 </div>
 

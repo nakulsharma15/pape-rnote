@@ -33,7 +33,7 @@ export default function NoteCard({ Note }) {
                 </div>
                 
                 <div className="note-footer flex-sb-c">
-                    <p className="text-s"><span className="note-created-text">Created on: </span><span>14/04/2022</span></p>
+                    <p className="text-s"><span className="note-created-text">Created on: </span><span>{Note.date}</span></p>
                     
                 </div>
             </div>

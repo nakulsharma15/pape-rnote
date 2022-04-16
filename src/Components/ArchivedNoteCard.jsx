@@ -28,7 +28,7 @@ export default function ArchivedNoteCard({ Note }) {
     }
 
     return (
-        <div className="note-card" style={{ backgroundColor: Note.color, width:"15rem"}}>
+        <div className="note-card" style={{ backgroundColor: Note.color}}>
             <div className="note-card-body">
                 <div className="note-title flex-sb-c">
                     <p className="note-title-text bold">{Note.title}</p>
