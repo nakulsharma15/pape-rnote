@@ -13,7 +13,7 @@ export default function NoteEditor() {
         label: "Home",
         priority: "Low",
         color: "#ffffff",
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleString()
     }
 
     const colors = ["#f87171", "#fdba74", "#fde047", "#86efac", "#7dd3fc", "#ffffff"]
@@ -88,11 +88,15 @@ export default function NoteEditor() {
                     <div>
                         <label> Select label: </label>
                         <select value={note.label} onChange={labelHandler} style={{ backgroundColor: note.color }}>
-                            <option value="Home"> Home
+                        <option value="Home"> Home
                             </option>
                             <option value="Work"> Work
                             </option>
                             <option value="Personal"> Personal
+                            </option>
+                            <option value="Exercise"> Exercise
+                            </option>
+                            <option value="Chores"> Chores
                             </option>
                         </select>
 

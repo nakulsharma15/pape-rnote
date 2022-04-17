@@ -1,5 +1,5 @@
 .note-card {
-    max-width: 20rem;
+    max-width: 30rem;
     height: max-content;
     border: 1px solid var(--gray-300);
     border-radius: 0.5rem;
