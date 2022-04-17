@@ -18,6 +18,8 @@ const NoteProvider = ({children}) => {
 
     const [note , setNote] = useState(sample);
 
+    const [noteDisplay , setNoteDisplay] = useState(false);
+
     const [ noteDetail , setNoteDetail ] = useState({
         notes:[],
         pinnedNotes:[],
@@ -25,7 +27,7 @@ const NoteProvider = ({children}) => {
         archiveNotes:[]
     })
     return(
-        <NoteContext.Provider value={{noteDetail , setNoteDetail , note , setNote } }>{children}</NoteContext.Provider>
+        <NoteContext.Provider value={{noteDetail , setNoteDetail , note , setNote , noteDisplay , setNoteDisplay } }>{children}</NoteContext.Provider>
     )
 }
 
