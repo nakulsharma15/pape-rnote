@@ -18,12 +18,13 @@ export default function NoteEditor() {
 
     const colors = ["#f87171", "#fdba74", "#fde047", "#86efac", "#7dd3fc", "#ffffff"]
 
-    const { noteDetail, setNoteDetail, note, setNote } = useNote();
+    const { noteDetail, setNoteDetail, note, setNote , noteDisplay , setNoteDisplay } = useNote();
 
     const { notes } = noteDetail;
 
     const cancelHandler = () => {
         setNote(sample);
+        setNoteDisplay(!(noteDisplay));
     }
 
 
@@ -64,6 +65,7 @@ export default function NoteEditor() {
             setNoteDetail((prev) => ({ ...prev, notes: [...notes, { ...note, id: uuidv4() }] }))
         }
         setNote(sample);
+        setNoteDisplay(!(noteDisplay));
         event.preventDefault();
     }
 

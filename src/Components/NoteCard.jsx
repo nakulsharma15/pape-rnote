@@ -4,7 +4,7 @@ import {useNote} from "../Contexts/NoteContext"
 
 export default function NoteCard({ Note }) {
 
-    const {noteDetail , setNoteDetail , setNote} = useNote();
+    const {noteDetail , setNoteDetail , setNote , noteDisplay , setNoteDisplay} = useNote();
 
     const {notes , pinnedNotes , archiveNotes , trashNotes} = noteDetail;
 
@@ -22,6 +22,7 @@ export default function NoteCard({ Note }) {
         const findNote = notes.find((item) => item.id === id);
 
         setNote((prev) => ({...prev, ...findNote}))
+        noteDisplay === false && setNoteDisplay(!(noteDisplay));
     }
 
     const deleteHandler = (id) => {

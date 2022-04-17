@@ -4,11 +4,16 @@ import { useFilter } from "../Contexts/Filters/FilterContext";
 
 export default function Home() {
 
-    const { noteDetail } = useNote();
+    const { noteDetail , noteDisplay , setNoteDisplay} = useNote();
 
-    const { notes, pinnedNotes } = noteDetail;
+    const { notes, pinnedNotes} = noteDetail;
 
     const { filteredNoteList, state, dispatch } = useFilter();
+
+
+    const displayHandler = () => {
+        setNoteDisplay(!(noteDisplay));
+    }
 
 
     return (
@@ -21,8 +26,12 @@ export default function Home() {
                 </div>
 
                 <div className="main-body">
+         
+                <button className="btn primary-btn" onClick={displayHandler} style={noteDisplay == false ? {display:"block"} : {display:"none"}}>Add Note + </button>
 
-                    <NoteEditor />
+                  <div style={noteDisplay === true ?{display:"block"} : {display:"none"}}>
+                  <NoteEditor />
+                  </div>
 
                     {(pinnedNotes.length !== 0) ? <div>
                         <h2>Pinned Notes: </h2>

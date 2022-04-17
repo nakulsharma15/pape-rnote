@@ -29,6 +29,7 @@ label {
     background-color: transparent;
     font-weight: bold;
     margin: 0 1rem;
+    margin-right: 4rem;
 }
 
 .filter-clear-btn:hover {
