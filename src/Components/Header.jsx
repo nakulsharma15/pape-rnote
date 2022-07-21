@@ -1,5 +1,6 @@
 import "./Styles/Header.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 export default function Header() {
 
@@ -20,7 +21,7 @@ export default function Header() {
                     <div style={{ color: "black" }} className="ecom-icon flex-align-center">
 
                         <div className="links text-m">
-                            <Link to="/login" style={{ color: "black" }} className="log-btn">Login</Link>
+                            <Link to="/login" style={{ color: "black" }} className="log-btn" onClick={toast.success("On Login Page")}>Login</Link>
                         </div>
                     </div>
                 </div>
