@@ -4,10 +4,6 @@ nav {
     padding: 1rem 2rem;
 }
 
-.search_am {
-    display: none;
-}
-
 .logo {
     display: flex;
 }
@@ -34,10 +30,6 @@ nav {
     text-decoration: underline;
 }
 
-nav .search-bar {
-    width: 20rem;
-}
-
 .fas:hover {
     cursor: pointer;
 }
@@ -46,19 +38,6 @@ nav .search-bar {
     font-size: 1.5rem;
     color: black;
     margin: 0rem 1rem;
-}
-
-.search-bar {
-    padding: 4px 8px;
-    width: 15rem;
-    border-radius: 6px;
-    border: 1px solid var(--black);
-    margin-right: 0;
-}
-
-.search-icon {
-    padding: 0.5rem;
-    cursor: pointer;
 }
 
 .hero-section {
@@ -81,28 +60,6 @@ nav .search-bar {
     margin-left: 0.25rem;
 }
 
-
-@media only screen and (max-width: 1170px) {
-    
-    .search_bm {
-        display: none;
-    }
-
-    .search_am {
-        display: block;
-        width: 100%;
-        display: inline-flex;
-        justify-content: center;
-        margin-bottom: 15px;
-       
-    }
-
-    .search_am input {
-        width: 90%;
-        border-color: black;
-    }
-
-}
 
 @media only screen and (max-width: 500px) {
     

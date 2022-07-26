@@ -1,8 +1,30 @@
 import { Header, Footer, Aside } from "../Components/index";
+import axios from "axios";
 
 import { Link } from "react-router-dom";
 
 export default function Login() {
+
+    const testCredentials = {
+        email: "nakulsharma@gmail.com",
+        password: "Nakul@123"
+    }
+
+    const handleLogin = async(loginData) => {
+
+            try{
+              const response = await axios.post("/api/auth/login", loginData);
+              if(response.status===200 || response.status===201){
+                const {foundUser,encodedToken} = response.data;
+                localStorage.setItem("Token",encodedToken)
+              }else{
+               console.log("Error aya")
+              }
+            }catch(err){
+              console.log(err);  
+            }  
+    }
+
 
     return (
         <div className="flex-column stick-bottom">
@@ -20,21 +42,21 @@ export default function Login() {
                         <div className="login-form flex-center-column box-shadow">
 
                             <div className="flex-column">
-                                <label for="email">Email:</label>
+                                <label htmlFor="email">Email:</label>
                                 <input className="login-input" type="text" id="email" required />
                             </div>
                             <div className="flex-column">
-                                <label for="password">Password:</label>
+                                <label htmlFor="password">Password:</label>
                                 <input className="login-input" type="password" id="password" required />
                             </div>
                             <div>
                                 <input type="checkbox" id="remember" />
-                                <label for="remember">Remember me</label>
+                                <label htmlFor="remember">Remember me</label>
 
                                 <span className="signup">Don't have an account?, <Link className="signup-link" to="/signup">Signup</Link></span>
                             </div>
 
-                            <Link to="/"><button className="btn primary-btn" type="submit">Login</button></Link>
+                            <button className="btn primary-btn" type="submit" onClick={() => handleLogin(testCredentials)}>Login</button>
 
                         </div>
 
