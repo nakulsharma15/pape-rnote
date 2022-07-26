@@ -12,13 +12,13 @@ makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <NoteProvider>
-      <FilterProvider>
-        <Router>
+    <Router>
+      <NoteProvider>
+        <FilterProvider>
           <App />
-        </Router>
-      </FilterProvider>
-    </NoteProvider>
+        </FilterProvider>
+      </NoteProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

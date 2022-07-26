@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNote } from "../Contexts/NoteContext";
 import { v4 as uuidv4 } from 'uuid';
 import "./Styles/NoteEditor.css";
+import { addNote, editNote } from "../Utils/NoteHandler";
 
 export default function NoteEditor() {
 
@@ -18,7 +19,7 @@ export default function NoteEditor() {
 
     const colors = ["#f87171", "#fdba74", "#fde047", "#86efac", "#7dd3fc", "#ffffff"]
 
-    const { noteDetail, setNoteDetail, note, setNote , noteDisplay , setNoteDisplay } = useNote();
+    const { noteDetail, setNoteDetail, note, setNote, noteDisplay, setNoteDisplay } = useNote();
 
     const { notes } = noteDetail;
 
@@ -54,15 +55,10 @@ export default function NoteEditor() {
         );
 
         if (findEdit) {
-            const updatedNotes = notes.map((item) =>
-                item.id === findEdit.id ? { ...item, ...note } : { ...item }
-            );
-
-            setNoteDetail((prev) => ({ ...prev, notes: updatedNotes }));
-
+            editNote(note, setNoteDetail);
         }
         else {
-            setNoteDetail((prev) => ({ ...prev, notes: [...notes, { ...note, id: uuidv4() }] }))
+            addNote(note, setNoteDetail);
         }
         setNote(sample);
         setNoteDisplay(!(noteDisplay));
@@ -74,15 +70,15 @@ export default function NoteEditor() {
         <div className="editor-box">
 
             <div>
-                <form style={{ backgroundColor: note.color }} className="note-form flex-column" onSubmit={submitHandler}>
+                <form style={{ backgroundColor: note?.color }} className="note-form flex-column" onSubmit={submitHandler}>
                     <div>
                         <div>
                             <label>Title: </label>
-                            <input style={{ backgroundColor: note.color }} value={note.title} onChange={titleHandler} required />
+                            <input style={{ backgroundColor: note?.color }} value={note?.title} onChange={titleHandler} required />
                         </div>
                         <div>
                             <label>Note: </label>
-                            <input style={{ backgroundColor: note.color }} value={note.note} onChange={noteHandler} required />
+                            <input style={{ backgroundColor: note?.color }} value={note?.note} onChange={noteHandler} required />
                         </div>
 
                     </div>
@@ -90,7 +86,7 @@ export default function NoteEditor() {
                     <div>
                         <label> Select label: </label>
                         <select value={note.label} onChange={labelHandler} style={{ backgroundColor: note.color }}>
-                        <option value="Home"> Home
+                            <option value="Home"> Home
                             </option>
                             <option value="Work"> Work
                             </option>
@@ -114,15 +110,15 @@ export default function NoteEditor() {
                     </div>
 
                     <div>
-                        {colors.map((color) => <span style={{ color: color, cursor: "pointer" }} className="material-icons" onClick={() => colorHandler(color)}>circle</span>)}
+                        {colors.map((color) => <span style={{ color: color, cursor: "pointer" }} className="material-icons" onClick={() => colorHandler(color)} key={color}>circle</span>)}
                     </div>
 
                     <div>
-                        
+
                         <button className="btn primary-btn submit-btn" type="submit">
                             Add Note
                         </button>
-                        
+
                         <button className="btn secondary-btn cancel-btn" onClick={cancelHandler}>Cancel</button>
                     </div>
 

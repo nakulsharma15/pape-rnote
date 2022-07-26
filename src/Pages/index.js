@@ -4,6 +4,7 @@ import Trash from "./Trash";
 import Login from "./Login";
 import Signup from "./Signup";
 import NoMatch from "./NoMatch";
+import MockMan from "./Mockman";
 
 export {
     Home,
@@ -11,5 +12,6 @@ export {
     Trash, 
     Signup,
     Login,
-    NoMatch
+    NoMatch,
+    MockMan
 }

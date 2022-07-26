@@ -22,7 +22,7 @@ export default function Archive() {
                   {(archiveNotes.length !== 0) ? <div>
                         <div className="notes flex-sp-ev notes-list">
                             {archiveNotes.map((note) =>
-                                <ArchivedNoteCard Note={note} />
+                                <ArchivedNoteCard Note={note} key={note._id}/>
                             )}
                         </div>
 

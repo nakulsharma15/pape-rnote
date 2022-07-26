@@ -33,6 +33,23 @@ body {
     flex-direction: "column";
 }
 
+.margin-one-bottom {
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    color: red;
+}
+
+.guest-login-btn {
+    color: var(--blue-500);
+}
+
+.guest-login-btn:hover {
+    cursor: pointer;
+    color: var(--blue-600);
+}
+
 .add-note-btn {
     max-width: fit-content;
     background-color: var(--blue-500);

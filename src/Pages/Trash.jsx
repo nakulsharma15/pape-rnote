@@ -22,7 +22,7 @@ export default function Trash() {
                   {(trashNotes.length !== 0) ? <div>
                         <div className="notes flex-sp-ev notes-list">
                             {trashNotes.map((note) =>
-                                <DeletedNoteCard Note={note} />
+                                <DeletedNoteCard Note={note} key={note._id}/>
                             )}
                         </div>
 
