@@ -1,6 +1,6 @@
 import "./Styles/NoteCard.css";
-
 import { useNote } from "../Contexts/NoteContext";
+import { unarchiveNote } from "../Utils/NoteHandler";
 
 export default function ArchivedNoteCard({ Note }) {
 
@@ -11,20 +11,7 @@ export default function ArchivedNoteCard({ Note }) {
     const unArchiveHandler = (id) => {
 
         const findNote = archiveNotes.find((note) => note.id === id);
-
-        const updatedArchives = archiveNotes.filter((note) => note.id !== id);
-
-        setNoteDetail({ ...noteDetail, notes: [...notes, findNote], archiveNotes: [...updatedArchives] });
-    }
-
-    const deleteHandler = (id) => {
-
-        const findNote = archiveNotes.find((note) => note.id === id);
-
-        const updatedArchives = archiveNotes.filter((note) => note.id !== id);
-
-        setNoteDetail({ ...noteDetail, trashNotes: [...trashNotes, findNote], archiveNotes: [...updatedArchives] });
-
+        unarchiveNote(findNote, setNoteDetail);
     }
 
     return (
@@ -48,7 +35,6 @@ export default function ArchivedNoteCard({ Note }) {
 
                         <span class="material-icons-outlined note-icons note-footer-icons" onClick={() => unArchiveHandler(Note.id)}>unarchive</span>
 
-                        <span className="material-icons-outlined note-icons note-footer-icons" onClick={() => deleteHandler(Note.id)}>delete</span>
                     </div>
                 </div>
 

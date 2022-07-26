@@ -1,6 +1,6 @@
 import "./Styles/NoteCard.css";
 import {useNote} from "../Contexts/NoteContext";
-import { deleteNote } from "../Utils/NoteHandler";
+import { archiveNote, deleteNote } from "../Utils/NoteHandler";
 
 export default function NoteCard({ Note }) {
 
@@ -11,10 +11,8 @@ export default function NoteCard({ Note }) {
     const archiveHandler = (id) => {
 
         const findNote = notes.find((item) => item.id === id);
+        archiveNote(findNote, setNoteDetail);
 
-        const updatedNotes = notes.filter((item) => item.id !== id)
-
-        setNoteDetail({...noteDetail , notes: [...updatedNotes] ,archiveNotes: [...archiveNotes , findNote]});
     }
 
     const editHandler = (id) => {
