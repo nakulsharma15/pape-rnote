@@ -1,18 +1,28 @@
 import { Header, Footer, Aside, NoteCard, NoteEditor, PinnedNoteCard, Filters } from "../Components/index";
 import { useNote } from "../Contexts/NoteContext";
 import { useFilter } from "../Contexts/Filters/FilterContext";
+import toast from "react-hot-toast";
 
 export default function Home() {
 
-    const { noteDetail , noteDisplay , setNoteDisplay} = useNote();
+    const { noteDetail, noteDisplay, setNoteDisplay } = useNote();
 
-    const { notes, pinnedNotes} = noteDetail;
+    const { notes, pinnedNotes, isLoggedIn } = noteDetail;
 
     const { filteredNoteList, state, dispatch } = useFilter();
 
 
     const displayHandler = () => {
         setNoteDisplay(!(noteDisplay));
+    }
+
+    const toastHandler = () => {
+
+            toast("You need to login to continue!",
+            {
+                icon: '⚠️',
+            }
+        )
     }
 
 
@@ -26,18 +36,21 @@ export default function Home() {
                 </div>
 
                 <div className="main-body">
-         
-                <button className="btn primary-btn" onClick={displayHandler} style={noteDisplay == false ? {display:"block"} : {display:"none"}}>Add Note + </button>
 
-                  <div style={noteDisplay === true ?{display:"block"} : {display:"none"}}>
-                  <NoteEditor />
-                  </div>
+                    {isLoggedIn ? <button className="btn primary-btn" onClick={displayHandler} style={noteDisplay == false ? { display: "block" } : { display: "none" }}>Add Note + </button> :
+
+                        <button className="btn primary-btn" onClick={toastHandler}>Add Note + </button>
+                    }
+
+                    <div style={noteDisplay === true ? { display: "block" } : { display: "none" }}>
+                        <NoteEditor />
+                    </div>
 
                     {(pinnedNotes.length !== 0) ? <div>
                         <h2>Pinned Notes: </h2>
                         <div className="notes flex-sp-ev notes-list">
                             {pinnedNotes.map((note) =>
-                                <PinnedNoteCard Note={note} />
+                                <PinnedNoteCard Note={note} key={note._id} />
                             )}
                         </div>
 
@@ -49,7 +62,7 @@ export default function Home() {
                             <h2>Notes:</h2>
                             <div className="notes flex-sp-ev notes-list">
                                 {filteredNoteList.map((note) =>
-                                    <NoteCard Note={note} />
+                                    <NoteCard Note={note} key={note._id} />
                                 )}
                             </div>
 

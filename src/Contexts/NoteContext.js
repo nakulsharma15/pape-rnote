@@ -1,6 +1,7 @@
-import { useContext, createContext, useState } from "react";
-const NoteContext = createContext();
+import { useContext, createContext, useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
+
+const NoteContext = createContext();
 
 const useNote = () => useContext(NoteContext);
 
@@ -27,6 +28,16 @@ const NoteProvider = ({ children }) => {
         trashNotes: [],
         archiveNotes: []
     })
+
+    const token = localStorage.getItem("Token");
+
+    useEffect(() => {
+        if (token) {
+            setNoteDetail({...noteDetail, isLoggedIn:true});
+        }
+    }, [noteDetail.isLoggedIn]);
+
+
     return (
         <NoteContext.Provider value={{ noteDetail, setNoteDetail, note, setNote, noteDisplay, setNoteDisplay }}>{children}</NoteContext.Provider>
     )

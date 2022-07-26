@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const addNote = async (noteData, setNoteDetail) => {
     try {
@@ -9,10 +10,11 @@ const addNote = async (noteData, setNoteDetail) => {
         });
         if (res.status === 200 || res.status === 201) {
             const { notes } = res.data;
-            setNoteDetail((prev) => ({ ...prev, notes: notes }))
+            setNoteDetail((prev) => ({ ...prev, notes: notes }));
+            toast.success("Note added successfully");
         }
     } catch (err) {
-        console.log("Something bad happened", err);
+        console.log("Error: ", err);
 
     }
 }
@@ -26,11 +28,11 @@ const editNote = async (noteData, setNoteDetail) => {
         });
         if (res.status === 200 || res.status === 201) {
             const { notes } = res.data;
-            console.log(notes);
-            setNoteDetail((prev) => ({ ...prev, notes: notes }))
+            setNoteDetail((prev) => ({ ...prev, notes: notes }));
+            toast.success("Note updated");
         }
     } catch (err) {
-        console.log("Something bad happened", err);
+        console.log("Error: ", err);
     }
 }
 
@@ -44,10 +46,11 @@ const deleteNote = async (noteData, setNoteDetail) => {
         if (res.status === 200 || res.status === 201) {
             const { notes } = res.data;
             setNoteDetail((prev) => ({ ...prev, trashNotes: [...prev.trashNotes, noteData], notes: notes }));
+            toast.success("Note deleted successfully");
 
         }
     } catch (err) {
-        console.log("Something bad happened", err);
+        console.log("Error: ", err);
 
     }
 }
@@ -62,9 +65,10 @@ const archiveNote = async (noteData, setNoteDetail) => {
         if (res.status === 200 || res.status === 201) {
             const { notes, archives } = res.data;
             setNoteDetail((prev) => ({ ...prev, archiveNotes: archives, notes: notes }));
+            toast.success("Note archived");
         }
     } catch (err) {
-        console.log("Something bad happened", err);
+        console.log("Error: ", err);
 
     }
 }
@@ -79,9 +83,10 @@ const unarchiveNote = async (noteData, setNoteDetail) => {
         if (res.status === 200 || res.status === 201) {
             const { notes, archives } = res.data;
             setNoteDetail((prev) => ({ ...prev, archiveNotes: archives, notes: notes }));
+            toast.success("Note moved to home");
         }
     } catch (err) {
-        console.log("Something bad happened", err);
+        console.log("Error: ", err);
     }
 }
 

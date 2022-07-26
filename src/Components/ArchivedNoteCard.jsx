@@ -33,7 +33,7 @@ export default function ArchivedNoteCard({ Note }) {
 
                     <div className="note-footer-content">
 
-                        <span class="material-icons-outlined note-icons note-footer-icons" onClick={() => unArchiveHandler(Note.id)}>unarchive</span>
+                        <span className="material-icons-outlined note-icons note-footer-icons" onClick={() => unArchiveHandler(Note.id)}>unarchive</span>
 
                     </div>
                 </div>

@@ -2,6 +2,7 @@ nav {
     width: 100%;
     background-color: var(--white);
     padding: 1rem 2rem;
+    border-bottom: 1px solid var(--gray-500);
 }
 
 .logo {
@@ -58,6 +59,10 @@ nav {
 .icon-btn {
     margin-right: 0.5rem;
     margin-left: 0.25rem;
+}
+
+.links:hover {
+    cursor: pointer;
 }
 
 

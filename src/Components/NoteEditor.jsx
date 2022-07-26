@@ -70,15 +70,15 @@ export default function NoteEditor() {
         <div className="editor-box">
 
             <div>
-                <form style={{ backgroundColor: note.color }} className="note-form flex-column" onSubmit={submitHandler}>
+                <form style={{ backgroundColor: note?.color }} className="note-form flex-column" onSubmit={submitHandler}>
                     <div>
                         <div>
                             <label>Title: </label>
-                            <input style={{ backgroundColor: note.color }} value={note.title} onChange={titleHandler} required />
+                            <input style={{ backgroundColor: note?.color }} value={note?.title} onChange={titleHandler} required />
                         </div>
                         <div>
                             <label>Note: </label>
-                            <input style={{ backgroundColor: note.color }} value={note.note} onChange={noteHandler} required />
+                            <input style={{ backgroundColor: note?.color }} value={note?.note} onChange={noteHandler} required />
                         </div>
 
                     </div>
