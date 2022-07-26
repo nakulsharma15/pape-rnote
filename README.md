@@ -9,7 +9,7 @@ PaperNote allows users to record, edit and organise plain-text notes.
 
 ## Live Link
 
-### Check out the live website here: [PaperNote](https://paper-note.netlify.app/)
+### Check out the live website here: [PaperNote](https://paper-note.vercel.app/)
 
 <br/>
 
