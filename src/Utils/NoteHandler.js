@@ -19,6 +19,24 @@ const addNote = async (noteData, setNoteDetail) => {
     }
 }
 
+const addNoteForPin = async (noteData, setNoteDetail) => {
+    try {
+        const res = await axios.post("/api/notes", { note: noteData }, {
+            headers: {
+                authorization: localStorage.getItem("Token"),
+            },
+        });
+        if (res.status === 200 || res.status === 201) {
+            const { notes } = res.data;
+            setNoteDetail((prev) => ({ ...prev, notes: notes }));
+        }
+    } catch (err) {
+        console.log("Error: ", err);
+
+    }
+}
+
+
 const editNote = async (noteData, setNoteDetail) => {
     try {
         const res = await axios.post(`/api/notes/${noteData._id}`, { note: noteData }, {
@@ -29,7 +47,6 @@ const editNote = async (noteData, setNoteDetail) => {
         if (res.status === 200 || res.status === 201) {
             const { notes } = res.data;
             setNoteDetail((prev) => ({ ...prev, notes: notes }));
-            toast.success("Note updated");
         }
     } catch (err) {
         console.log("Error: ", err);
@@ -47,6 +64,24 @@ const deleteNote = async (noteData, setNoteDetail) => {
             const { notes } = res.data;
             setNoteDetail((prev) => ({ ...prev, trashNotes: [...prev.trashNotes, noteData], notes: notes }));
             toast.success("Note deleted successfully");
+
+        }
+    } catch (err) {
+        console.log("Error: ", err);
+
+    }
+}
+
+const deleteNoteForPin = async (noteData, setNoteDetail) => {
+    try {
+        const res = await axios.delete(`/api/notes/${noteData._id}`, {
+            headers: {
+                authorization: localStorage.getItem("Token"),
+            },
+        });
+        if (res.status === 200 || res.status === 201) {
+            const { notes } = res.data;
+            setNoteDetail((prev) => ({ ...prev, notes: notes }));
 
         }
     } catch (err) {
@@ -95,5 +130,7 @@ export {
     editNote,
     deleteNote,
     archiveNote,
-    unarchiveNote
+    unarchiveNote,
+    deleteNoteForPin,
+    addNoteForPin
 }

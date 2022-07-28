@@ -1,6 +1,6 @@
 import "./Styles/NoteCard.css";
-
 import {useNote} from "../Contexts/NoteContext";
+import { addNoteForPin } from "../Utils/NoteHandler";
 
 export default function NoteCard({ Note }) {
 
@@ -11,9 +11,11 @@ export default function NoteCard({ Note }) {
     const unpinHandler = (id) => {
         const findNote = pinnedNotes.find((item) => item.id === id);
 
+        addNoteForPin(findNote, setNoteDetail);
+
         const updatedList = pinnedNotes.filter((item) => item.id !== id);
 
-        setNoteDetail({...noteDetail , notes:[...notes , findNote] , pinnedNotes:[...updatedList]});
+        setNoteDetail({...noteDetail, pinnedNotes:[...updatedList]});
     }
 
 
