@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNote } from "../Contexts/NoteContext";
 import { v4 as uuidv4 } from 'uuid';
 import "./Styles/NoteEditor.css";
-import { addNote, editNote } from "../Utils/NoteHandler";
+import { addNote, editNote, addNoteForPin } from "../Utils/NoteHandler";
 
 export default function NoteEditor() {
 
@@ -21,7 +21,7 @@ export default function NoteEditor() {
 
     const { noteDetail, setNoteDetail, note, setNote, noteDisplay, setNoteDisplay } = useNote();
 
-    const { notes } = noteDetail;
+    const { notes, pinnedNotes } = noteDetail;
 
     const cancelHandler = () => {
         setNote(sample);
@@ -54,12 +54,25 @@ export default function NoteEditor() {
             item.id === note.id ? { ...item } : undefined
         );
 
-        if (findEdit) {
+        const findIsPinned = pinnedNotes.find((item) =>
+            item.id === note.id ? { ...item } : undefined
+        );
+
+        if (findIsPinned) {
+            const updatedList = pinnedNotes.filter((item) => item.id !== note.id);
+            setNoteDetail({ ...noteDetail, pinnedNotes: [...updatedList] });
+            addNoteForPin(note, setNoteDetail);
+        }
+
+        else if (findEdit) {
             editNote(note, setNoteDetail);
         }
+         
         else {
             addNote(note, setNoteDetail);
         }
+
+
         setNote(sample);
         setNoteDisplay(!(noteDisplay));
         event.preventDefault();

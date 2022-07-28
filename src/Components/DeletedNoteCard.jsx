@@ -1,6 +1,6 @@
 import "./Styles/NoteCard.css";
 import { useNote } from "../Contexts/NoteContext";
-import { addNote } from "../Utils/NoteHandler";
+import { addNoteForPin } from "../Utils/NoteHandler";
 
 export default function DeletedNoteCard({ Note }) {
 
@@ -15,7 +15,7 @@ export default function DeletedNoteCard({ Note }) {
         const updatedTrash = trashNotes.filter((note) => note.id !== id);
 
         setNoteDetail({ ...noteDetail, trashNotes: [...updatedTrash] });
-        addNote(findNote, setNoteDetail);
+        addNoteForPin(findNote, setNoteDetail);
     }
 
     const deleteHandler = (id) => {

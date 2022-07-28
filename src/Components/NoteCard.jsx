@@ -1,6 +1,6 @@
 import "./Styles/NoteCard.css";
 import {useNote} from "../Contexts/NoteContext";
-import { archiveNote, deleteNote } from "../Utils/NoteHandler";
+import { archiveNote, deleteNote, deleteNoteForPin } from "../Utils/NoteHandler";
 
 export default function NoteCard({ Note }) {
 
@@ -32,9 +32,9 @@ export default function NoteCard({ Note }) {
     const pinHandler = (id) => {
         const findNote = notes.find((item) => item.id === id);
 
-        const updatedNotes = notes.filter((item) => item.id !== id);
+        deleteNoteForPin(findNote, setNoteDetail);
         
-        setNoteDetail({...noteDetail , notes:[...updatedNotes] , pinnedNotes:[...pinnedNotes , findNote]})
+        setNoteDetail({...noteDetail , pinnedNotes:[...pinnedNotes , findNote]})
     }
 
     return (
